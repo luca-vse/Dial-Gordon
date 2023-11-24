@@ -1,0 +1,45 @@
+version: '3.5'
+services:
+  rasa_api:
+    image: rasa/rasa:3.6.10
+    ports:
+      - 5005:5005
+    volumes:
+      - ./:/app
+    command:
+      - run
+      - --verbose
+      - --enable-api
+    depends_on:
+      rasa_actions:
+        condition: service_started   
+
+#  rasa_actions:
+ #   image: rasa/rasa-sdk:latest
+  #  volumes:
+     # - ./app/actions:/app/actions/
+   # ports: 
+    #  - 5055:5055    
+
+  rasa_actions:
+    image: rasa/rasa-sdk:latest
+    build:
+      context: .
+      dockerfile: Dockerfile-rasa_actions
+#    volumes:
+#      - ./app/actions:/app/actions/
+    ports:
+      - 5055:5055
+
+  fastapi_app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - 8000:8000
+    depends_on:
+      rasa_api:
+        condition: service_started      
+
+
+

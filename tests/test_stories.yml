@@ -1,0 +1,80 @@
+# Zde jsou testované příběhy a pravidla
+
+stories:
+- story: User says goodbye
+  steps:
+  - user: |
+      bye
+    intent: goodbye
+  - action: utter_goodbye 
+
+- story: User asks if system is bot
+  steps:
+  - user: |
+      are you human
+    intent: bot_challenge
+  - action: utter_iamabot 
+
+- story: User thanks
+  steps:
+  - user: |
+      thank you very much
+    intent: thank
+  - action: utter_thanks 
+
+- story: User asks for help
+  steps:
+  - user: |
+      can you help me
+    intent: help
+  - action: utter_help   
+
+- story: User asks for help with reading
+  steps:
+  - user: |
+      i need help reading messages
+    intent: help_read
+  - action: utter_help_read   
+
+- story: User asks for help with response
+  steps:
+  - user: |
+      how do i respond to message
+    intent: help_respond
+  - action: utter_help_respond 
+
+- story: User asks for help with blocking a number
+  steps:
+  - user: |
+      help me to block a number
+    intent: help_block_number
+  - action: utter_help_block_number    
+
+- story: User asks for help with calendar
+  steps:
+  - user: |
+      i do not know how to add event
+    intent: help_set_reminder
+  - action: utter_help_set_reminder    
+
+- story: User asks for help with greeting
+  steps:
+  - user: |
+      how do i change my greeting message
+    intent: help_greeting
+  - action: utter_help_greeting   
+
+- story: User asks for help with pin
+  steps:
+  - user: |
+      help me change a pin
+    intent: help_pin
+  - action: utter_help_pin   
+
+- story: User asks for help with deleting messages
+  steps:
+  - user: |
+      help delete messages
+    intent: help_delete
+  - action: utter_help_delete_message   
+

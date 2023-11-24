@@ -1,0 +1,434 @@
+# Zde jsou veškeré intenty na kterých se bot učí a umí reagovat
+version: "3.1"
+
+nlu:
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+- intent: goodbye
+  examples: |
+    - good by
+    - cee you later
+    - good night
+    - bye
+    - goodbye
+    - have a nice day
+    - see you around
+    - bye bye
+    - see you later
+    - see you soon
+    - have a good day
+    - see you
+    
+
+- intent: help
+  examples: |
+    - I dont know what to do
+    - what do i do
+    - how can you help me
+    - help
+    - what can you do
+    - help i am lost
+    - i do not know how to start
+    - i dont understand
+
+- intent: help_read
+  examples: |
+    - I dont know how to read messages
+    - can you help me with read messages
+    - help read messages
+    - how do i read messages
+    - help read messages
+    - i dont understand how to read messages
+
+- intent: help_block_number
+  examples: |
+    - help block number
+    - I want to block a number
+    - I need help with block number
+    - I need help with blocking number
+    - can you help with block number
+    - i need help with removing number from being blocked
+    - i do not know how to remove a number from being blocked
+    - i need help with removing number from blacklist
+    - i need help with removing person from blacklist
+    - i need help with finding who is blocked
+    - help with finding who is blocked
+    - help with which number is blocked   
+
+- intent: help_respond
+  examples: |
+    - help respond
+    - i dont know how to respond to the messages
+    - what can i do to respond to the messages
+    - how can i respond to the new messages
+    - how can i answer to the messages
+    - what can i answer to the message
+    - how can you help me answering to message
+
+- intent: help_set_reminder
+  examples: |
+    - help set reminder
+    - help set event
+    - help with calendar
+    - help with google calendar
+    - how do i set reminder
+    - how do i set event
+    - how can i set reminder
+    - what calender to set reminder
+    - help setting event
+    - help setting reminder  
+    - can you help me with setting reminder
+    - can you help me with setting event
+    - help calendar
+    - can you help me add event to calendar
+    - help add event to calendar
+
+- intent: help_greeting
+  examples: |
+    - help greeting
+    - how do i set my greeting message
+    - can you help me with setting greeting message
+    - help with greeting
+    - help with new greeting
+    - help with greeting message
+    - how to set greeting
+    - how to record a new greeting
+    - how to play a greeting message
+    - help welcome message
+    - help intro message
+    - help introduction message
+
+- intent: help_delete
+  examples: | 
+   - help how to delete messages
+   - help delete messages
+   - I do not know how to delete messages
+   - what happen to deleted messages
+   - i do not understand delete message
+   - help remove message
+   - help bin message
+   - help me with deleting message    
+
+- intent: help_pin
+  examples: |
+    - help pin
+    - help setting a pin
+    - help reset a pin
+    - help reseting a pin
+    - how do i set my pin
+    - how do i reset my pin
+    - can you help me with pin 
+
+- intent: affirm
+  examples: |
+    - yes
+    - y
+    - indeed
+    - of course
+    - that sounds good
+    - correct
+    - sure
+    - yep
+
+- intent: deny
+  examples: |
+    - no
+    - n
+    - never
+    - I don't think so
+    - don't like that
+    - no way
+    - not really
+    - no I dont know
+
+- intent: bot_challenge
+  examples: |
+    - are you a bot?
+    - are you a human?
+    - am I talking to a bot?
+    - am I talking to a human?
+
+- intent: thank
+  examples: |
+    - thank
+    - thanks
+    - thank you
+    - appreciate it
+    - many thanks
+
+- intent: pin
+  examples: |
+    - [123456](pin)
+    - sure, its [456050](pin)
+    - my pin is [552056](pin)
+    - [800871](pin)
+    - yes, [845765](pin)
+    - the pin is [800876](pin)
+    - old pin [564564](pin)
+    - new pin [564564](pin)
+
+- intent: set_pin
+  examples: |
+    - I want to change my pin
+    - I want to set my pin
+    - set pin
+    - change pin
+    - can i set a pin
+    - can you set a pin
+    - I want to set a pin
+    - set a pin for my voicemail
+    - I would like to change my password
+    - I would like to change my pin
+    - can you change my PIN
+
+- intent: call_back
+  examples: |
+   - please, call back
+   - call him
+   - call her
+   - call john
+   - can you call Jessica
+   - sure, call
+   - dial john
+   - call
+   - call back
+   - connect me with
+   - connect me with Ema
+   - i call you back
+
+- intent: read_more
+  examples: |
+   - can you read the next message
+   - please what does the next message say
+   - another message
+   - read the next messages
+   - go ahead, read next message
+   - read another one
+   - read message
+   - read first message
+   - read new messages
+   - do i have some more new messages
+   - any new messages
+   - can i read my first new message please
+   - read for me
+   - play new messages
+   - please, play new messages
+   - show me whats new
+   - show new messages
+   - can you play new messages
+   - show me messages
+   - i want to read 1 messages
+
+- intent: message_from
+  examples: |
+   - is there any message from Erik
+   - can you read messages from Petr
+   - please read messages from Alena
+   - any message from Eva
+   - do i have any message from Carl
+   - now i want to read the message from Anna
+   - i want to read message from Ema
+   - read message from Aneta
+   - can you read message from Jonas
+
+- intent: read_priority   
+  examples: |
+   - are there any priority messages
+   - can you read priority messages
+   - please read only priority messages
+   - read priority
+   - go ahead read priority messages
+   - are there any urgent messages
+   - can you read urgent messages
+   - read urgent messages
+   - find urgent messages
+   - is there any urgent message
+   - start reading urgent messages
+   - are there any important messages
+   - can you read important message
+   - read important message
+   - find important message
+   - do i have important message
+   - start reading important message
+   - anything that needs to be delt with fast
+   - anything that needs my attention
+   - can you read me the emergency message
+   - play priority message
+   - show important message
+     
+- intent: repeat_bot_message
+  examples: |
+   - sorry what did you said
+   - can you repeat what you said
+   - please repeat what your last messages
+   - can you repeat the last message
+   - please play the message again
+   - please repeat what you just said
+   - repeat the message
+   - repeat message
+
+- intent: delete_message
+  examples: |
+   - can you delete all messages from this number?
+   - delete all messages from
+   - remove all messages
+   - remove all messages from this caller
+   - delete all messages from him
+   - please remove all messages from her
+   - put messages to bin
+
+- intent: restore_message
+  examples: |
+   - restore
+   - can you restore messages from bin
+   - sorry, I made a mistake. Can you restore the messages
+   - restore messages
+   - please undo this action
+   - get back the deleted messages
+   - get back messages from trash
+   
+- intent: set_greeting_message
+  examples: |
+   - set greeting
+   - set greeting message
+   - can you set my greeting message
+   - setting greeting message
+   - greeting message set
+   - I want to set my greeting message
+   - Set a new greeting message
+   - record greeting message
+   - record new greeting message
+   - now i want to change my welcome message
+   - change welcome message
+   - change the inviting message
+   - change introduction message
+   - change initial message
+   - change welcoming
+   - change greeting
+   - change the introduction message
+   - i want to change my welcome message
+   - change my greeting message
+
+
+- intent: new_greeting_message
+  examples: |
+   - hi, this is Bob leave a message and I will call you back
+   - hi, I currently do not accept any calls. Leave a message please
+   - hello, you have called Bob. Please leave a message and he will call you back.
+   - good morning, this is John. Could you record a message.
+   - good afternoon, this is Bobs voicemail, please record a message
+   - Hello here is Bob leave the message after the beep
+
+- intent: play_greeting_message
+  examples: |
+   - play greeting
+   - play greeting message
+   - What is my greeting message?
+   - Can you play my greeting message
+   - what is the intro message i have set up
+   - hear the greeting message
+   - play the greeting message
+   - Could you play voicemail greeting
+   - play intro message
+   - play welcome message
+   - play introduction message
+   - play invite message
+   - what is my welcoming
+   - play my greeting
+
+- intent: reset
+  examples: |
+   - reset pin
+   - reset
+   - I do not know my old pin can you reset my pin
+   - reset my pin
+   - can you reset pin
+   - i need to reset my pin
+
+- intent: block_number
+  examples: |
+   - can you block this number
+   - I want to block this number
+   - can you block this caller
+   - can you bloc number
+   - can you put him on black list
+   - can you put her on blacklist
+   - block it
+   - block him
+   - block caller
+   - blacklist this person
+   - put this person on a black list
+   - block number
+   - blacklist number
+
+- intent: blacklisted_number
+  examples: |
+   - can you show me who is on blacklist
+   - i want to see what numbers i have on blacklist
+   - who is on blacklist
+   - who is on spam
+   - who is blocked
+   - what numbers are blocked
+   - who cannot call me
+   - who cannot i receive messages from
+   - what numbers can i not receive calls from
+   - see blacklist
+
+- intent: remove_blacklisted_number
+  examples: |
+   - remove [845765102](number_blacklist) from blacklist
+   - please remove [605740533](number_blacklist) from blacklist
+   - remove [845765102](number_blacklist) from spam
+   - i want to receive messages from [845765102](number_blacklist)
+   - can you delete [664505102](number_blacklist) from spam
+   - can you delete [664505102](number_blacklist)
+
+- intent: calendar
+  examples: |
+   - Hey, remind me to [walk the dog](event_name) at [7 pm](event_time) [today](event_date) at [office](event_location)
+   - Remind me about [meeting with Paul](event_name) at [12 pm](event_time) [tomorrow](event_date) on [teams](event_location)
+   - please add to my calendar [dinner with Jane](event_name) at [8 pm](event_time) [next week](event_date) on [google meeting](event_location)
+   - Hey, remind me to [walk the dog](event_name) at [7 pm](event_time) [today](event_date) at [cinema](event_location)
+   - Remind me about [meeting](event_name) at [12 pm](event_time) [tomorrow](event_date) at [place](event_location)
+   - add to calendar [go jogging](event_name) at [6 am](event_time) on [tuesday](event_date) at [park](event_location)
+   - add to calendar [go jogging](event_name) at [10 am](event_time) on [monday](event_date) on [skype](event_location)
+   - remind me to [go shopping](event_name) at [6 am](event_time) on [wednesday](event_date) at [grandparents house](event_location) 
+   - can you remind me about [swimming](event_name) at [9pm](event_time) [today](event_date) at [restaurant](event_location)
+   - please add to my calendar [dancing](event_name) at [1am](event_time) [saturday](event_date) at [restaurant U Dvou bratru](event_location)
+   - please add to my calendar [dancing](event_name) at [1am](event_time) [december 17th](event_date) at [club Bang](event_location) 
+   - can you add to my calendar [cooking](event_name) at [11am](event_time) [tomorrow](event_date) at [park](event_location)
+   - add to calendar [walking](event_name) at [6 am](event_time) on [17 january](event_date) at [park](event_location)
+   - add to calendar [walkmeeting with Susane](event_name) at [9 am](event_time) on [20 october](event_date) at [park](event_location)
+   - add to calendar [meeting with Paul](event_name) at [9 am](event_time) on [20 january](event_date) at [park](event_location)
+   - add to calendar [jogging](event_name) at [9 am](event_time) on [5 february](event_date) at [park](event_location)
+   - add to calendar [work](event_name) at [9 am](event_time) on [10 march](event_date) at [park](event_location)
+   - add to calendar [walkmeeting with Susane](event_name) at [9 am](event_time) on [6 april](event_date) at [Sydney](event_location)
+   - add to calendar [walkmeeting with Susane](event_name) at [16 pm](event_time) on [14 may](event_date)
+   - add to calendar [walkmeeting with Susane](event_name) at [9 pm](event_time) on [8th june](event_date) at [Prague](event_location)
+   - add to calendar [walkmeeting with Susane](event_name) at [9am](event_time) on [13 july](event_date)
+   - add to calendar [meeting with Susane](event_name) at [9am](event_time) on [13th april](event_date)
+   - add to calendar [meeting with Susane](event_name) at [9am](event_time) on [18th july](event_date)
+   - add to calendar [meeting with Susane](event_name) at [9am](event_time) on [1st august](event_date)
+   - add to calendar [meeting with Susane](event_name) at [9am](event_time) on [19th july](event_date)
+   - add to calendar [meeting with Susane](event_name) at [9am](event_time) on [17th march](event_date)
+   - please add to my calendar [meeting with Paul](event_name) at [1pm](event_time) [8 august](event_date)
+   - please add to my calendar [running with Paul](event_name) at [1pm](event_time) [8 september](event_date) at [mall](event_location)
+   - Remind me about [meeting with Paul](event_name) at [20pm](event_time) [9 october](event_date) at [park](event_location)
+   - Remind me about [basketball with Erik](event_name) at [18 pm](event_time) [6th november](event_date) at [London](event_location)
+   - Remind me about [jogging with Ema](event_name) at [13 pm](event_time) [21st december](event_date)
+   
+

@@ -1,0 +1,259 @@
+version: "3.1"
+
+stories:
+# Příběh pro změnu uvítací zprávy.
+# Uživatel si přeje změnit uvítací zprávu.
+# Bot se zeptá uživatele na novou uvítací zprávu.
+# Uživatel zadá novou uvítací zprávu.
+# Bot změní uvítací zprávu a přehraje ji uživateli.
+- story: change greeting message
+  steps:
+  - intent: set_greeting_message
+  - action: utter_ask_new_greeting_message
+  - intent: new_greeting_message
+  - action: action_set_greeting_message
+  
+# Příběh pro změnu pinu, ověření současného pinu správné. Uživatel zadá nový pin a poté potvrdí změnu pinu.
+# Uživatel si přeje změnit pin. Pin je ověřen.
+# Bot se zeptá uživatele na nový pin.
+# Uživatel zadá nový pin.
+# Bot se zeptá uživatele zda chce potvrdit změnu nového pinu.
+# Uživatel potvrdí změnu nového pinu.
+- story: welcome user and change pin ok
+  steps:
+   - intent: set_pin
+   - action: utter_ask_for_old_pin
+   - intent: pin
+     entities:
+      - pin: "456789"
+   - action: action_check_pin
+   - slot_was_set:
+      - old_pin: true
+   - intent: pin
+     entities:
+      - pin: "456789"
+   - action: action_valid_pin
+   - slot_was_set:
+      - valid_pin: true
+   - action: utter_ask_confirm_new_pin
+   - intent: affirm
+   - action: action_new_pin
+
+# Příběh pro změnu pinu, ověření současného pinu správné. Uživatel zadá nový pin a poté odmítne změnu pinu. Zadá nový pin ještě jednou (pro případ, že se překlepl nebo si nový pin rozmyslel) a potrvdí.
+# Uživatel si přeje změnit pin. Pin je ověřen.
+# Bot se zeptá uživatele na nový pin.
+# Uživatel zadá nový pin.
+# Bot se zeptá uživatele zda chce potvrdit změnu nového pinu.
+# Uživatel odmítne změnu nového pinu.
+# Uživatel má možnost zadat nový pin.
+# Uživatel potvrdí botovi změnu nového pinu.
+- story: welcome user and change pin no and yes
+  steps:
+   - intent: set_pin
+   - action: utter_ask_for_old_pin
+   - intent: pin
+     entities:
+      - pin: "456789"
+   - action: action_check_pin
+   - slot_was_set:
+      - old_pin: true
+   - intent: pin
+     entities:
+      - pin: "456789"
+   - action: action_valid_pin
+   - slot_was_set:
+      - valid_pin: true
+   - action: utter_ask_confirm_new_pin
+   - intent: deny
+   - action: utter_ask_for_new_pin_again
+   - intent: pin
+     entities:
+      - pin: "456789"
+   - action: action_valid_pin
+   - slot_was_set:
+      - valid_pin: true
+   - action: utter_ask_confirm_new_pin
+   - intent: affirm
+   - action: action_new_pin
+
+# Příběh pro změnu pinu, ověření současného pinu správné. Uživatel zadá nový pin a poté odmítne změnu pinu. Zadá nový pin ještě jednou (pro případ, že se překlepl nebo si nový pin rozmyslel) a potrvdí.
+# Uživatel si přeje změnit pin. Pin je ověřen.
+# Bot se zeptá uživatele na nový pin.
+# Uživatel zadá nový pin.
+# Bot se zeptá uživatele zda chce potvrdit změnu nového pinu.
+# Uživatel odmítne změnu nového pinu.
+# Uživatel má možnost zadat nový pin.
+# Uživatel zamítne.
+# Bot se zeptá, co může udělat.
+- story: welcome user and change pin no and yes
+  steps:
+   - intent: set_pin
+   - action: utter_ask_for_old_pin
+   - intent: pin
+     entities:
+      - pin: "456789"
+   - action: action_check_pin
+   - slot_was_set:
+      - old_pin: true
+   - intent: pin
+     entities:
+      - pin: "456789"
+   - action: action_valid_pin
+   - slot_was_set:
+      - valid_pin: true
+   - action: utter_ask_confirm_new_pin
+   - intent: deny
+   - action: utter_ask_for_new_pin_again
+   - intent: deny
+   - action: utter_ask_for_task2
+
+# Příběh pro změnu pinu, první pokus neplatný, druhý pokus zadání pinu je správný, uživatel dotázán na nový pin. Pin změněn.
+# Uživatel si přeje změnit pin. Pin je ověřen.
+# Ověřený pin se neshoduje se zadaným, uživatel dostane druhý pokus na zadání pinu.
+# Druhé zadání pinu je správné.
+# Bot se zeptá uživatele na nový pin.
+# Uživatel zadá nový pin a potvrdí změnu.
+# Uživateli je změněn pin.
+- story: welcome user and change pin bad after that ok
+  steps:
+   - intent: set_pin
+   - action: utter_ask_for_old_pin
+   - intent: pin
+     entities:
+      - pin: "456789"
+   - action: action_check_pin
+   - slot_was_set:
+      - old_pin: false
+      - pin_verified: false
+   - action: utter_retry_pin
+   - intent: pin
+     entities:
+      - pin: "789012"
+   - action: action_check_pin
+   - slot_was_set:
+      - old_pin: true
+   - intent: pin
+     entities:
+      - pin: "456789"
+   - action: action_valid_pin
+   - slot_was_set:
+      - valid_pin: true
+   - action: utter_ask_confirm_new_pin
+   - intent: affirm
+   - action: action_new_pin
+
+# Příběh pro změnu pinu, první pokus neplatný, druhý pokus neplatný, uživatel dotázán zda si přeje pin resetovat. Reset pinu uživatel odmítne.
+# Uživatel si přeje změnit pin. Pin je ověřen.
+# Ověřený pin se neshoduje se zadaným, uživatel dostane druhý pokus na zadání pinu.
+# Druhé zadání pinu je rovněž špatné.
+# Bot navrhe uživateli reset pinu.
+# Uživatel odmítne reset pinu. Bot se zeptá, co může udělat.
+- story: welcome user and change pin bad reset no
+  steps:
+   - intent: set_pin
+   - action: utter_ask_for_old_pin
+   - intent: pin
+     entities:
+      - pin: "456789"
+   - action: action_check_pin
+   - slot_was_set:
+      - old_pin: false
+      - pin_verified: false
+   - action: utter_retry_pin
+   - intent: pin
+     entities:
+      - pin: "789012"
+   - action: action_check_pin
+   - action: utter_ask_to_reset_pin
+   - intent: deny
+   - action: utter_ask_for_task2
+
+# Příběh pro změnu pinu, první pokus neplatný, druhý pokus neplatný, uživatel dotázán zda si přeje pin resetovat. Reset pinu proběhne.
+# Uživatel si přeje změnit pin. Pin je ověřen.
+# Ověřený pin se neshoduje se zadaným, uživatel dostane druhý pokus na zadání pinu.
+# Druhé zadání pinu je rovněž špatné.
+# Bot navrhe uživateli reset pinu.
+# Uživatel potvrdí.
+# Bot oznámí, kam nový pin přijde.
+# Uživatel potvrdí reset pinu.
+- story: welcome user and change pin bad reset yes
+  steps:
+   - intent: set_pin
+   - action: utter_ask_for_old_pin
+   - intent: pin
+     entities:
+      - pin: "456789"
+   - action: action_check_pin
+   - slot_was_set:
+      - old_pin: false
+      - pin_verified: false
+   - action: utter_retry_pin
+   - intent: pin
+     entities:
+      - pin: "789012"
+   - action: action_check_pin
+   - action: utter_ask_to_reset_pin
+   - or:
+     - intent: affirm
+     - intent: reset
+   - action: action_confirm_rest_pin
+   - or:
+     - intent: affirm
+     - intent: reset
+   - action: action_reset_pin
+
+# Příběh pro reset pinu a potvrzení resetu pinu.
+# Uživatel si přeje resetovat pin. Bot oznámí, kam nový pin přijde.
+# Uživatel potvrdí reset pinu.
+- story: welcome user and reset pin yes
+  steps:
+   - intent: reset
+   - action: action_confirm_rest_pin
+   - or:
+     - intent: affirm
+     - intent: reset
+   - action: action_reset_pin
+
+# Příběh pro reset pinu a odmítnutí resetu pinu.
+# Uživatel si přeje resetovat pin. Bot oznámí, kam nový pin přijde.
+# Uživatel odmítne reset pinu. Bot se zeptá, co může udělat.
+- story: welcome user and change reset no
+  steps:
+   - intent: reset
+   - action: action_confirm_rest_pin
+   - intent: deny
+   - action: utter_ask_for_task2
+
+# Příběh pro reset pinu a následné změny pinu.
+# Uživatel si přeje resetovat pin. Bot oznámí, kam nový pin přijde.
+# Uživatel potvrdí reset pinu.
+# Uživatel si přeje změnit pin. Pin je ověřen.
+# Bot se zeptá uživatele na nový pin.
+# Uživatel zadá nový pin.
+# Bot se zeptá uživatele zda chce potvrdit změnu nového pinu.
+# Uživatel potvrdí změnu nového pinu.
+- story: welcome user and reset pin yes5
+  steps:
+   - intent: reset
+   - action: action_confirm_rest_pin
+   - or:
+     - intent: affirm
+     - intent: reset
+   - action: action_reset_pin
+   - intent: set_pin
+   - action: utter_ask_for_old_pin
+   - intent: pin
+     entities:
+      - pin: "456789"
+   - action: action_check_pin
+   - slot_was_set:
+      - old_pin: true
+   - intent: pin
+     entities:
+      - pin: "456789"
+   - action: action_valid_pin
+   - slot_was_set:
+      - valid_pin: true
+   - action: utter_ask_confirm_new_pin
+   - intent: affirm
+   - action: action_new_pin

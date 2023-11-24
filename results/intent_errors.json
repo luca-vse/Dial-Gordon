@@ -1,0 +1,18 @@
+[
+  {
+    "text": "do i have some more new messages¨",
+    "intent": "read_more",
+    "intent_prediction": {
+      "name": "read_oldest_message_first",
+      "confidence": 0.18031297624111176
+    }
+  },
+  {
+    "text": "any new messages",
+    "intent": "read_more",
+    "intent_prediction": {
+      "name": "stop",
+      "confidence": 0.4846822917461395
+    }
+  }
+]

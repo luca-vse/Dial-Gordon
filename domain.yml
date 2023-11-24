@@ -1,0 +1,187 @@
+# Zde jsou všechny intenty, akce, entity a sloty, které jsou volány z příběhů - stories a pravidel - rules
+version: "3.1"
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - bot_challenge
+  - thank
+  - pin
+  - call_back
+  - message_from
+  - read_more
+  - read_priority
+  - repeat_bot_message
+  - set_greeting_message
+  - new_greeting_message
+  - play_greeting_message
+  - set_pin
+  - reset
+  - delete_message
+  - restore_message
+  - block_number
+  - blacklisted_number
+  - remove_blacklisted_number
+  - help
+  - help_read
+  - help_block_number
+  - help_respond
+  - help_set_reminder
+  - help_greeting
+  - help_pin
+  - help_delete
+  - calendar
+  
+
+
+entities:
+  - pin
+  - number_blacklist
+  - event_name
+  - event_time
+  - event_date
+  - event_location
+
+slots:
+
+  number_blacklist:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: number_blacklist       
+
+  pin:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: pin
+
+  old_pin:
+    type: bool
+    influence_conversation: true
+    mappings:
+    - type: custom
+
+  valid_pin:
+    type: bool
+    influence_conversation: true
+    mappings:
+    - type: custom
+
+  pin_verified:
+    type: bool
+    influence_conversation: true
+    mappings:
+    - type: custom
+
+  event_name:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: event_name
+
+  event_time:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: event_time
+
+  event_date:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: event_date         
+
+  event_location:
+    type: text
+    mappings:
+      - type: from_entity
+        entity: event_location               
+
+responses:
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_please_rephrase:
+  - text: "I'm sorry, I didn't quite understand that. Could you say it differently?"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_help:
+  - text: "I can read your new messages. Messages can be read from oldest or from specific name you have in contacts or by priority. After reading messages I can respond to them by calling back, adding events to calendar, blocking numbers or deleting messages. I can also help you customize your greeting message or set your pin. For further assistance say 'help' followed by what you need help with."
+
+  utter_help_read:
+  - text: "For reading messages say read message or read priority message or read message from followed by name."
+
+  utter_help_respond:
+  - text: "You can respond to new messages by saying call back or add reminder. Also you can respond by asking me to delete all messages from this caller or block a number. If you need further with blocking a number ask for help block a number."
+
+  utter_help_block_number:
+  - text: "After reading a new message you can ask me to block number and I will block the number for you. Messages from blocked numbers will not get to you. I will place them to spam. You can add new numbers to your blocked numbers anytime. Just ask block number followed by what number you want to block. You can view blocked numbers or remove numbers from being blocked."
+  
+  utter_help_set_reminder:
+  - text: "For adding event to google calendar you can for example say: can you add event meeting with Carl at 2 pm on Monday. Another example would be: please remind me about running at 3pm on 16 december."
+
+  utter_help_greeting:
+  - text: "If you want to know what your greeting message is, ask me to play greeting message. For setting your greeting message ask me to set a greeting message. I will ask you for a new greeting message."
+
+  utter_help_pin:
+  - text: "Ask to set pin. Pin is for allowing you to get to your voice messages. When changing a pin I will ask you to tell me your old pin. If you do not know your pin, I can help you reset your pin. In that case ask me to reset pin."
+  
+  utter_help_delete_message:
+  - text: "All messages older than 20 days are actively deleted by Gordon. If someone has sent you lots of messages and you do not want to read them all you can put them to bin. After reading a message ask to delete messages."
+  
+  utter_thanks:
+  - text: "You are welcome. Glad I could help."
+
+  utter_ask_for_task2:
+  - text: "What can I do for you?"
+
+  utter_ask_new_greeting_message:
+  - text: "Please tell a new greeting message."
+
+  utter_ask_for_old_pin:
+  - text: "Please enter your current pin for verification."
+
+  utter_ask_confirm_new_pin:
+  - text: "Are you sure you want to change the pin to the new pin you just entered?"
+
+  utter_ask_to_reset_pin:
+  - text: "Do you want to reset your pin?"
+
+  utter_retry_pin:
+  - text: "Please enter your current pin again."
+
+  utter_ask_for_new_pin_again:
+  - text: "Please enter new pin."
+
+actions:
+  - action_get_user_name
+  - action_check_unread_messages
+  - action_read_new_messages
+  - action_read_priority_message  
+  - action_call_back
+  - action_play_greeting_message
+  - action_set_greeting_message
+  - action_check_pin
+  - action_new_pin
+  - action_confirm_rest_pin
+  - action_reset_pin
+  - action_valid_pin
+  - action_delete_message
+  - action_restore_message
+  - action_block_number
+  - action_get_blacklisted_numbers
+  - action_remove_blacklisted_number
+  - action_repeat_bot_message
+  - action_name_from_message
+  - action_add_calendar
+
+  
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true

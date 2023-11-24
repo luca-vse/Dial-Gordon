@@ -1,0 +1,158 @@
+# Zde jsou veškerá pravidla, které reagují kdykoliv kdy se shoduje intent neboli vstup od uživatele
+version: "3.1"
+
+rules:
+
+#Pravidlo pro pozdravení uživatele a přečtení počtu nepřečteních zpráv
+- rule: Say hello and number of new messages anytime the user says hello
+  steps:
+  - intent: greet
+  - action: action_get_user_name
+  - action: action_check_unread_messages
+  - action: utter_ask_for_task2
+
+#Pravidlo pro pozdrav na rozloučenou
+- rule: Say goodbye anytime the user says goodbye
+  steps:
+  - intent: goodbye
+  - action: utter_goodbye
+
+#Pravidlo pro oznámení systému jako bot
+- rule: Say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+#Pravidlo pro poděkování
+- rule: Say thanks
+  steps: 
+  - intent: thank
+  - action: utter_thanks
+
+#Pravidlo pro pomoc
+- rule: User asks for help
+  steps:
+  - intent: help
+  - action: utter_help  
+
+#Pravidlo pro pomoc se čtením zpráv
+- rule: Help with reading messages
+  steps:
+  - intent: help_read
+  - action: utter_help_read    
+
+#Pravidlo pro pomoc s odpovídáním na zprávy
+- rule: Help with responding to messages
+  steps:
+  - intent: help_respond
+  - action: utter_help_respond    
+
+#Pravidlo pro pomoc se zablokováním čísla volajícího
+- rule: Help with blocking a number
+  steps:
+  - intent: help_block_number
+  - action: utter_help_block_number      
+
+#Pravidlo pro pomoc s přidáváním událostí do kalendáře
+- rule: Help with setting reminders
+  steps:
+  - intent: help_set_reminder
+  - action: utter_help_set_reminder
+
+#Pravidlo pro pomoc se změnou uvítací zprávy
+- rule: Help with customizing greeting message
+  steps:
+  - intent: help_greeting
+  - action: utter_help_greeting
+
+#Pravidlo pro pomoc s nastavením pinu
+- rule: Help with setting a pin
+  steps:
+  - intent: help_pin
+  - action: utter_help_pin      
+
+#Pravidlo pro pomoc s mazáním zpráv
+- rule: Help with delete message
+  steps:
+  - intent: help_delete
+  - action: utter_help_delete_message
+
+#Pravidlo pro pomoc se čtením nových zpráv
+- rule: Read more messages
+  steps:
+  - intent: read_more
+  - action: action_read_new_messages
+
+#Pravidlo pro čtení zpráv od jména
+- rule: Message from
+  steps:
+  - intent: message_from
+  - action: action_name_from_message   
+
+#Pravidlo pro zavolání zpět
+- rule: Call back
+  steps:
+  - intent: call_back
+  - action: action_call_back
+
+#Pravidlo pro čtení naléhavých zpráv
+- rule: Read priority messages
+  steps:
+  - intent: read_priority
+  - action: action_read_priority_message  
+
+#Pravidlo pro mazání zpráv
+- rule: Delete messages
+  steps:
+  - intent: delete_message
+  - action: action_delete_message
+
+#Pravidlo pro obnovení smazaných zpráv
+- rule: Restore messages
+  steps:
+  - intent: restore_message
+  - action: action_restore_message  
+
+#Pravidlo pro zopakování zprávy od bota
+- rule: Repeat bot message
+  steps:
+  - intent: repeat_bot_message
+  - action: action_repeat_bot_message
+
+#Pravidlo pro přehrání uvítací zprávy
+- rule: Play a greeting message
+  steps:
+  - intent: play_greeting_message
+  - action: action_play_greeting_message
+
+#Pravidlo pro zablokování čísla
+- rule: Block or blacklist a number
+  steps:
+  - intent: block_number
+  - action: action_block_number 
+
+#Pravidlo pro zobrazení seznamu zablokovaných čísel
+- rule: See who is on blacklist
+  steps:
+  - intent: blacklisted_number
+  - action: action_get_blacklisted_numbers   
+
+#Pravidlo pro odstranění čísel ze zablokovaných
+- rule: Remove number from blacklist
+  steps:
+  - intent: remove_blacklisted_number
+    entities:
+      - number_blacklist: "706502405"
+  - action: action_remove_blacklisted_number     
+
+#Pravidlo pro přidání události do kalendáře
+- rule: Add event to calendar
+  steps:
+  - intent: calendar
+  - action: action_add_calendar  
+
+#Pravidlo pro zeptání se uživatele na přeformulování vstupního textu ve chvíli kdy si bot není jistý reakcí
+- rule: Ask the user to say intent differently whenever they send a message with low NLU confidence
+  steps:
+  - intent: nlu_fallback
+  - action: utter_please_rephrase  

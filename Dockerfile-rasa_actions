@@ -1,0 +1,8 @@
+FROM rasa/rasa-sdk:latest
+WORKDIR /app
+USER root
+COPY ./requirements-rasa_actions.txt /app/requirements-rasa_actions.txt
+RUN pip install --no-cache-dir --upgrade -r /app/requirements-rasa_actions.txt
+COPY ./app /app
+
+USER 1001

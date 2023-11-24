@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style> 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 160vh;
+}
+
+.wrapper {
+    width: 370px;
+}
+
+.wrapper  .title  {
+    background: #090ED8;
+    color: white;
+    line-height: 2.5;
+    border-radius: 5px 5px 0 0;
+    text-align: center;
+    font-size: 20px;
+}
+
+.wrapper .box {
+    border: 1px solid #efefef;
+    padding: 10px 15px;
+    min-height: 400px;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+.wrapper .box .item {
+    display: flex;
+    float: left;
+    margin: 10px 0;
+}
+
+.wrapper .box .item .icon {
+    background: #090ED8;
+    color: white;
+    width: 40px;
+    height: 40px;
+    text-align: center;
+    line-height: 40px;
+    border-radius: 50%;
+}
+
+.wrapper .box .item .msg {
+    background: #090ED8;
+    color: white;
+    border-radius: 10px;
+    width: 150px;
+    margin-left: 10px;
+}
+
+.wrapper .box .item .msg p {
+    padding: 10px;
+}
+
+.wrapper .box .item.right {
+    float: right;
+}
+
+.wrapper .box .item.right .msg {
+    background: #efefef;
+    color: #333;
+}
+
+.wrapper .typing-area {
+    width: 100%;
+    background: #efefef;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+}
+
+.wrapper .typing-area .input-field {
+    width: 100%;
+    position: relative;
+}
+
+.wrapper .typing-area .input-field input {
+    width: 70%;
+    padding: 10px;
+    border: 1px solid transparent;
+    border-radius: 3px;
+    outline: none;
+    padding-right: 70px;
+    font-family: 'Poppins', sans-serif;
+    transition: 0.3s all ease;
+}
+
+.wrapper .typing-area .input-field input:focus {
+    border-color: #090ED8;
+}
+
+.wrapper .typing-area .input-field button {
+    position: absolute;
+    top: 50%;
+    right: 110px;
+    transform: translateY(-50%);
+    background: transparent;
+    border: 1px solid #090ED8;
+    padding: 5px 10px;
+    border-radius: 3px;
+    color: #090ED8;
+    outline: none;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transition: 0.3s all ease;
+}
+
+.wrapper .typing-area .input-field button:hover {
+    background: #090ED8;
+    color: white;
+}
+
+.wrapper .typing-area .input-field input:valid ~ button {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.wrapper .typing-area .input-field .buttonSpeaker {
+  position: absolute;
+  top: 50%;
+  right: 50px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 1px solid white;
+  padding: 5.5px 8px;
+  border-radius: 3px;
+  color: #090ED8;
+  outline: none;
+  cursor: pointer;
+  opacity: 1;
+  pointer-events: auto;
+  transition: 0.3s all ease;
+}
+
+.wrapper .typing-area .input-field .buttonSpeakerLoud {
+  position: absolute;
+  top: 50%;
+  right: -3px;
+  transform: translateY(-50%);
+  background: transparent;
+  border: 1px solid white;
+  padding: 5.5px 8px;
+  border-radius: 3px;
+  color: #090ED8;
+  outline: none;
+  cursor: pointer;
+  opacity: 1;
+  pointer-events: auto;
+  transition: 0.3s all ease;
+}
+
+.wrapper .typing-area .input-field .buttonSpeaker:hover {
+    background: white;
+    color: white;
+}
+    </style>
+    <title>Bot Gordon</title>
+</head>
+<body>
+    <div class="wrapper">
+        <div class="title">Dial Gordon</div>
+        <div class="box">
+            <div class="item">
+                    <img width="28" height="28" src="https://img.icons8.com/external-smashingstocks-glyph-smashing-stocks/66/000000/external-robot-robots-smashingstocks-glyph-smashing-stocks-33.png" alt="external-robot-robots-smashingstocks-glyph-smashing-stocks-33"/> 
+                    <div class="msg">
+                    <p> Hi, I'm Gordon. I can read your new messages and help you to respond to them. If you get lost, ask me for help. Say hello to get started.</p>
+                </div>
+            </div>
+            <br clear="both">
+        </div>
+        
+        <div class="typing-area">
+            <div class="input-field">
+                <input type="text" placeholder="Type your message ..." required id="chat-input">
+                <button id="chat-send-button">Send</button>
+                <button class="buttonSpeaker" id="chat-mic-button">
+                    <span class="speaker-icon">
+                        <img width="25" height="22" src="https://img.icons8.com/ios-glyphs/100/microphone.png" alt="microphone"/>
+                    </span>
+                </button>    
+                <button class="buttonSpeakerLoud" id="chat-speaker-button">
+                    <span class="speaker-icon">
+                        <img width="25" height="22" src="https://img.icons8.com/material-two-tone/100/medium-volume.png" alt="speaker"/>
+                    </span>
+                </button>    
+            </div>
+        </div>
+        <footer style="padding: 20px;">
+            <a  href="https://icons8.com/icon/fnD1eFoLRHrK/microphone"></a>Icons by <a href="https://icons8.com">Icons8</a>
+        </footer>
+    </div>
+    <script>
+        $("#chat-input").keypress(function(event){
+            if(event.which === 13) {
+                sendMessage();
+            }
+        });
+
+        $("#chat-send-button").click(function() {
+            sendMessage();
+        });
+
+        $("#chat-mic-button").click(function() {
+            recordMessage();
+        });
+
+       function scrollChatToBottom(){
+        const chatBox = document.querySelector(".box");
+        chatBox.scrollTop = chatBox.scrollHeight;
+       }
+       let speakButtonClicked = true;
+       document.getElementById("chat-speaker-button").addEventListener("click", trackSpeakState);
+
+        
+
+        function trackSpeakState() {
+    if (speakButtonClicked) {
+        speakButtonClicked = false;
+        $("#chat-speaker-button").html('<img width="25" height="22" src="https://img.icons8.com/material-two-tone/100/no-audio--v1.png" alt="no-speaker"/>');
+    } else {
+        speakButtonClicked = true;
+        $("#chat-speaker-button").html('<img width="25" height="22" src="https://img.icons8.com/material-two-tone/100/medium-volume.png" alt="speaker"/>');
+    }
+            }
+
+
+        const synth = window.speechSynthesis;
+
+        function speak(text) {
+        if (speakButtonClicked) {
+        const utterance = new SpeechSynthesisUtterance(text);
+        utterance.lang = "en-US";
+	    utterance.continuous = false;
+        utterance.interimResults = false;
+
+        synth.speak(utterance);
+        }
+        }
+
+        function sendMessage() {
+            let userMessage = $("#chat-input").val();
+            if (userMessage.trim() === "") return;
+            $("#chat-input").val("");
+
+            
+            let userBubble = '<div class="item right"><div class="msg"><p>'+ userMessage + '</p></div></div>'
+            
+            $(".box").append(userBubble);
+            scrollChatToBottom();
+            console.log("userMessage:", userMessage); 
+             $.ajax({
+             type: "POST",
+             url: "/api",
+             contentType: "application/json",
+             data: JSON.stringify({message: userMessage}),
+             success: function(data){
+             let botResponse = data.response;
+
+             let botBubble = '<div class="item"><img width="28" height="28" src="https://img.icons8.com/external-smashingstocks-glyph-smashing-stocks/66/000000/external-robot-robots-smashingstocks-glyph-smashing-stocks-33.png" alt="icon"/> <div class="msg"><p>'+ botResponse + '</p></div></div>';
+             $(".box").append(botBubble);
+             scrollChatToBottom();
+
+
+                speak(botResponse);
+
+             },
+            error: function(){
+                let botResponse = "Server error. Please try again later.";
+
+                let botBubble = '<div class="item"><img width="28" height="28" src="https://img.icons8.com/external-smashingstocks-glyph-smashing-stocks/66/000000/external-robot-robots-smashingstocks-glyph-smashing-stocks-33.png" alt="icon"/> <div class="msg"><p>'+ botResponse + '</p></div></div>';
+                $(".box").append(botBubble);
+                scrollChatToBottom();
+             }
+         })}
+
+        function recordMessage() { 
+
+	        const recognition = new webkitSpeechRecognition();
+
+	        recognition.lang = "en-US";
+	        recognition.continuous = false;
+	        recognition.interimResults = false;
+            recognition.start();
+	        console.log('Listening...');
+            botListenning = "Listening ..."
+            let botBubble = '<div class="item"><img width="28" height="28" src="https://img.icons8.com/external-smashingstocks-glyph-smashing-stocks/66/000000/external-robot-robots-smashingstocks-glyph-smashing-stocks-33.png" alt="icon"/> <div class="msg"><p>'+ botListenning + '</p></div></div>';
+             $(".box").append(botBubble);
+             speak(botListenning);
+             scrollChatToBottom();
+
+	        recognition.onresult = function(event) {
+
+	        var transcript = event.results[0][0].transcript;
+            let userBubble = '<div class="item right"><div class="msg"><p>'+ transcript + '</p></div></div>'            
+            $(".box").append(userBubble);
+            scrollChatToBottom();
+
+            $.ajax({
+             type: "POST",
+             url: "/api",
+             contentType: "application/json",
+             data: JSON.stringify({message: transcript}),
+             success: function(data){
+             let botResponse = data.response;
+
+             let botBubble = '<div class="item"><img width="28" height="28" src="https://img.icons8.com/external-smashingstocks-glyph-smashing-stocks/66/000000/external-robot-robots-smashingstocks-glyph-smashing-stocks-33.png" alt="icon"/> <div class="msg"><p>'+ botResponse + '</p></div></div>';
+             $(".box").append(botBubble);
+             scrollChatToBottom();
+
+                speak(botResponse);
+
+
+             },
+            error: function(){
+                let botResponse = "Server error. Please try again later.";
+
+                let botBubble = '<div class="item"><img width="28" height="28" src="https://img.icons8.com/external-smashingstocks-glyph-smashing-stocks/66/000000/external-robot-robots-smashingstocks-glyph-smashing-stocks-33.png" alt="icon"/> <div class="msg"><p>'+ botResponse + '</p></div></div>';
+                $(".box").append(botBubble);
+                scrollChatToBottom();
+             }})
+
+        }  }
+        
+    </script>
+</body>
+</html>
