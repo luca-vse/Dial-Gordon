@@ -5,10 +5,8 @@ Gordon is a bot build using Rasa Open Source Framework and FastAPI. Gordon is us
 Gordon je bot vytvořen pro ovládání hlasové schránky. Je sestaven za pomoci Rasa Open Source Framework, FastAPI, rozšíření pro Google Chrome pro TTS a STT a databáze v XAMPP, která simuluje hlasovou schránku. Bot umí anglicky.
 
 
-## Screenshots
-
-![App Screenshot](https://via.placeholder.com/468x300?text=App+Screenshot+Here)
-
+## Náhled aplikace
+![botGordonGit](https://github.com/luca-vse/Dial-Gordon/assets/147036440/722ad174-daa6-4948-a4e8-9e19d5b01df2)
 
 ## Funkce
 
@@ -23,7 +21,7 @@ Gordon je bot vytvořen pro ovládání hlasové schránky. Je sestaven za pomoc
 
 
 ## Instalace
-Prerekvizity: Nainstalován Python 3.8.10, pip3, Rasa 3.6.2, modul XAMPP s databází uvedenou ve složce XXX. 
+Prerekvizity: Nainstalován Python 3.8.10, pip3, Rasa 3.6.2, modul XAMPP s databází uvedenou ve složce Db_data. 
 Projekt je spouštěn z VS Code na Windows 10 Pro. Aplikaci lze spustit lokálně nebo vytvořit kontejner v dockeru.
 
     
