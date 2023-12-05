@@ -1,8 +1,0 @@
-{
-  "rule_only_slots": [
-    "number_blacklist"
-  ],
-  "rule_only_loops": [
-    "event_form"
-  ]
-}

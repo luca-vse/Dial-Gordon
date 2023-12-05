@@ -1,5 +1,5 @@
 # Zde jsou testované příběhy a pravidla
-
+version: "3.1"
 stories:
 - story: User says goodbye
   steps:

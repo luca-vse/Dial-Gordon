@@ -53,6 +53,7 @@ nlu:
     - how do i read messages
     - help read messages
     - i dont understand how to read messages
+    - i need help reading messages
 
 - intent: help_block_number
   examples: |
@@ -132,6 +133,7 @@ nlu:
     - how do i set my pin
     - how do i reset my pin
     - can you help me with pin 
+    - help me change a pin
 
 - intent: affirm
   examples: |

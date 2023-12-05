@@ -1,37 +1,30 @@
 {
-  "event_time": {
+  "event_date": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 42,
+    "support": 52,
     "confused_with": {}
   },
   "event_name": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 56,
+    "support": 74,
     "confused_with": {}
   },
-  "name": {
+  "event_location": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 7,
+    "support": 28,
     "confused_with": {}
   },
-  "email": {
+  "event_time": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 5,
-    "confused_with": {}
-  },
-  "event_date": {
-    "precision": 1.0,
-    "recall": 1.0,
-    "f1-score": 1.0,
-    "support": 41,
+    "support": 49,
     "confused_with": {}
   },
   "pin": {
@@ -52,19 +45,19 @@
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 165
+    "support": 217
   },
   "macro avg": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 165
+    "support": 217
   },
   "weighted avg": {
     "precision": 1.0,
     "recall": 1.0,
     "f1-score": 1.0,
-    "support": 165
+    "support": 217
   },
   "accuracy": 1.0
 }
